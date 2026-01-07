@@ -1,9 +1,8 @@
 const cron = require('node-cron');
 const leadService = require('../services/leadService');
 
-// Schedule the CRM sync job to run every 5 minutes
-// The cron expression "*/5 * * * *" means every 5 minutes
-const task = cron.schedule('*/5 * * * *', async () => {
+
+const task = cron.schedule('*/4 * * * *', async () => {
   console.log('[CRM Sync Job] Starting CRM sync process...');
   
   try {

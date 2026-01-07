@@ -251,32 +251,32 @@ const countryCodesMap = {
 };
 
 class LeadService {
-  // Enrich a single name using Nationalize.io API
+  
   async enrichName(name) {
     try {
       const response = await axios.get(`https://api.nationalize.io?name=${encodeURIComponent(name)}`);
       const data = response.data;
       
       if (data.country && data.country.length > 0) {
-        // Get the most likely country
+      
         const topCountry = data.country[0];
         const countryCode = topCountry.country_id;
         const probability = topCountry.probability;
         
-        // Get full country name from the mapping
+        
         const countryName = countryCodesMap[countryCode] || countryCode;
         
-        // Determine status based on probability
+        
         const status = probability > 0.6 ? 'Verified' : 'To Check';
         
         return {
           name: name.trim(),
-          country: countryName, // Using full country name instead of code
+          country: countryName, 
           probability: probability,
           status: status
         };
       } else {
-        // If no country data found, return default values
+        
         return {
           name: name.trim(),
           country: 'Unknown',
@@ -295,30 +295,30 @@ class LeadService {
     }
   }
 
-  // Process a batch of names concurrently
+ 
   async processBatch(names) {
-    // Create an array of promises for concurrent processing
+    
     const promises = names.map(name => this.enrichName(name));
     
-    // Wait for all promises to resolve
+    
     const results = await Promise.all(promises);
     
-    // Save all results to the database
+    
     const savedLeads = [];
     for (const result of results) {
       try {
         const existingLead = await Lead.findOne({ name: result.name });
         
         if (existingLead) {
-          // Update existing lead with new data
+          
           existingLead.country = result.country;
           existingLead.probability = result.probability;
           existingLead.status = result.status;
-          existingLead.crmSynced = false; // Reset sync flag for updated leads
+          existingLead.crmSynced = false; 
           await existingLead.save();
           savedLeads.push(existingLead);
         } else {
-          // Create new lead
+          
           const newLead = new Lead(result);
           const savedLead = await newLead.save();
           savedLeads.push(savedLead);
@@ -331,17 +331,17 @@ class LeadService {
     return savedLeads;
   }
 
-  // Get all leads with optional filtering
+  
   async getLeads(filter = {}) {
     return await Lead.find(filter).sort({ createdAt: -1 });
   }
 
-  // Get leads by status
+  
   async getLeadsByStatus(status) {
     return await Lead.find({ status }).sort({ createdAt: -1 });
   }
 
-  // Find verified leads that haven't been synced yet
+  
   async getUnsyncedVerifiedLeads() {
     return await Lead.find({ 
       status: 'Verified', 
@@ -349,7 +349,7 @@ class LeadService {
     });
   }
 
-  // Mark leads as synced
+  
   async markAsSynced(leadIds) {
     await Lead.updateMany(
       { _id: { $in: leadIds } },
