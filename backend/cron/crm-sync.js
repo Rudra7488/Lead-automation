@@ -20,9 +20,7 @@ const task = cron.schedule('*/4 * * * *', async () => {
     for (const lead of unsyncedLeads) {
       console.log(`[CRM Sync] Sending verified lead ${lead.name} to Sales Team...`);
       
-      // In a real implementation, you would integrate with your CRM system here
-      // For example, making an API call to Salesforce, HubSpot, etc.
-      // await crmService.createContact(lead);
+     
     }
     
     // Mark all processed leads as synced
@@ -34,7 +32,7 @@ const task = cron.schedule('*/4 * * * *', async () => {
     console.error('[CRM Sync Job] Error during sync process:', error);
   }
 }, {
-  scheduled: false // We'll control when to start the task
+  scheduled: false 
 });
 
 // Export the task so we can start it from server.js

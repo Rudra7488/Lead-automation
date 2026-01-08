@@ -1,3 +1,6 @@
+// all about gitignore for backend
+
 node_modules
+
 
 .env

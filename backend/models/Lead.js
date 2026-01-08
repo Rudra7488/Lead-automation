@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// schema definition for Lead model
 const leadSchema = new mongoose.Schema({
   name: {
     type: String,

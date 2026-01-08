@@ -5,7 +5,7 @@ A complete MERN stack application that automates lead enrichment and CRM synchro
 ## Features
 
 - **Lead Enrichment**: Automatically determine the most likely country for a given name
-- **Batch Processing**: Process multiple names concurrently for efficiency
+- **Batch Processing**: Process multiples names concurrently for efficiency
 - **Status Classification**: Classify leads as "Verified" (>60% confidence) or "To Check" (≤60% confidence)
 - **Real-time Dashboard**: View and filter leads in a responsive UI
 - **Automated CRM Sync**: Background job that syncs verified leads to CRM every 5 minutes

@@ -1,7 +1,7 @@
 const axios = require('axios');
 const Lead = require('../models/Lead');
 
-// Mapping country codes to full country names
+// Mapping country codes to full country names for better readability
 const countryCodesMap = {
   'AF': 'Afghanistan',
   'AX': 'Aland Islands',

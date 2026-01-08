@@ -29,7 +29,7 @@ const leadController = {
     }
   },
 
-  // Get all leads with optional filtering
+  
   async getLeads(req, res) {
     try {
       const { status } = req.query;

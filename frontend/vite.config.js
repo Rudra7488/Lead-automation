@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
   
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/configs/
 export default defineConfig({
   plugins: [ tailwindcss(),react()],
   server: {

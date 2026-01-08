@@ -1,8 +1,10 @@
 {
-  "name": "lead-automation-frontend",
+
+
+  "name": "lead-automation-frontend-dev",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "module", 
   "scripts": {
     "dev": "vite",
     "build": "vite build",
