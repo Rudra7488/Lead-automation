@@ -14,8 +14,8 @@ app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
       "http://localhost:3000",
-      "http://localhost:5173",
-      "https://lead-automation-frm0.onrender.com"
+      "http://localhost:5173"
+      
     ];
 
     // allow requests with no origin (Postman, curl)
