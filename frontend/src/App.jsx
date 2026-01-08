@@ -4,7 +4,7 @@ import {
   FaPlus, FaEdit, FaSpinner, FaTimes, FaCheck, 
   FaTimesCircle, FaInbox, FaChartBar, FaFilter 
 } from 'react-icons/fa';
-
+const API_URL = import.meta.env.VITE_API_URL;
 const App = () => {
   const [names, setNames] = useState('');
   const [leads, setLeads] = useState([]);
@@ -37,7 +37,7 @@ const App = () => {
 
   const fetchLeads = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/leads');
+      const response = await fetch(`${API_URL}/api/leads`);
       const result = await response.json();
       if (result.success) {
         setLeads(result.data);
@@ -65,7 +65,7 @@ const App = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:5000/api/leads/process', {
+      const response = await fetch(`${API_URL}/api/leads/process`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ names: nameList }),
