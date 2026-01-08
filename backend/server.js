@@ -35,7 +35,9 @@ app.use(cors({
 // IMPORTANT: preflight handler
 app.options("*", cors());
 
-
+app.use("/",(req,res)=>{
+  res.send("API is running");
+})
 app.use(express.json());
 
 // Route
