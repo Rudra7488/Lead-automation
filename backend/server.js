@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/api/leads', require('./routes/leads'));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/leads', {
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://rudrs3780_db_user:zK77lC9OB61femMR@cluster0.uqdpoqq.mongodb.net/lead-automation', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
