@@ -35,13 +35,16 @@ app.use(cors({
 // IMPORTANT: preflight handler
 app.options("*", cors());
 
-app.use("/",(req,res)=>{
-  res.send("API is running");
-})
+// Middleware MUST come before routes
 app.use(express.json());
 
 // Route
 app.use('/api/leads', require('./routes/leads'));
+
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: "API is running", status: "ok" });
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://rudrs3780_db_user:zK77lC9OB61femMR@cluster0.uqdpoqq.mongodb.net/lead-automation', {
