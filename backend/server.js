@@ -15,7 +15,7 @@ app.use(cors({
     const allowedOrigins = [
       "http://localhost:3000",
       "http://localhost:5173",
-      "https://lead-automations.netlify.app/"
+      "https://celebrated-fox-15c9d1.netlify.app"
       
     ];
 
